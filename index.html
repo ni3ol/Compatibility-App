@@ -1,0 +1,20 @@
+<html lang="en">
+<head>
+    <title>Are you compatible?</title>
+</head>
+<body>
+    <h1>Are you compatible?</h1>
+
+    <form action="" method="get">
+        First name:<br>
+        <input type="text" name="first_name" value="Nicol"><br>
+        Second name:<br>
+        <input type="text" name="second_name" value="Pierre"><br><br>
+        <input type="submit" value="Check Compatibility">
+    </form>
+
+    {% if percentage %}
+        <p>{{first_name }} and {{second_name }} are {{percentage }} % compatible. </p>
+    {% endif %}
+</body>
+</html>
