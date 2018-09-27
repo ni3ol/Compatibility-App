@@ -7,21 +7,32 @@ environment = Environment(loader=FileSystemLoader("./"))
 
 def calculate_compatibility(name_1, name_2):
     name = name_1 + name_2
-    count = 0
     count_dict = Counter(name)
-    for i in name:
-        count += count_dict[i]
-    percent = (count - len(name_1)) * len(name_2)
-    if percent > 100:
-        return percent / len(name_2)
-    if percent < 0:
-        return 0
-    return percent
+    values = count_dict.values()
+    while len(values) > 2:
+        n = values[0] + values[-1]
+        
+
+
+def calculate(name_1, name_2):
+    name = name_1 + name_2
+    name_d = Counter(name)
+    count_list = []
+    for i in name_d:
+        count_list.append(name_d[i])
+    
+    
 
 @app.route("/", methods=['GET', 'POST'])
 def hello():
-    first_name = request.args['first_name']
-    second_name = request.args['second_name']
+    if 'first_name' not in request.args:
+        first_name = ''
+    else:
+        first_name = request.args['first_name']
+    if 'second_name' not in request.args:
+        second_name = ''
+    else:
+        second_name = request.args['second_name']
     percentage = calculate_compatibility(first_name, second_name)
     template = environment.get_template("index.html")
     return template.render(first_name=first_name, second_name=second_name, percentage=percentage)

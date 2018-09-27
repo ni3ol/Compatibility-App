@@ -1,20 +1,33 @@
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.css">
+    <script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.js"></script>
     <title>Are you compatible?</title>
+    <style>
+            body {
+                background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmeqGD4u_UHvQtsszCcf4B7R-Xw9uP_dhQzHh9XbZhfZEeohvIeg)
+            }
+    </style>
 </head>
 <body>
-    <h1>Are you compatible?</h1>
+    <div class="ui raised very padded text container segment">
+    <h1 class="ui dividing header">Are you compatible?</h1>
 
     <form action="" method="get">
         First name:<br>
-        <input type="text" name="first_name" value="Nicol"><br>
+        <input type="text" name="first_name" value={{first_name}}><br>
         Second name:<br>
-        <input type="text" name="second_name" value="Pierre"><br><br>
-        <input type="submit" value="Check Compatibility">
-    </form>
-
-    {% if percentage %}
+        <input type="text" name="second_name" value={{second_name}}><br><br>
+        <input class="ui red button" type="submit" value="Check Compatibility"><br><br>
+        {% if percentage %}
         <p>{{first_name }} and {{second_name }} are {{percentage }} % compatible. </p>
     {% endif %}
+    </form>
+</div>
 </body>
 </html>
